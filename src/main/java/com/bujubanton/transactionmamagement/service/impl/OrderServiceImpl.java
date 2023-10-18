@@ -9,6 +9,7 @@ import com.bujubanton.transactionmamagement.repository.OrderRepository;
 import com.bujubanton.transactionmamagement.repository.PaymentRepository;
 import com.bujubanton.transactionmamagement.service.OrderService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
@@ -23,6 +24,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @Transactional //handles multiple transaction actions in a single method
     public OrderResponse placeOrder(OrderRequest orderRequest) {
         //get order
         Order order = orderRequest.getOrder();
